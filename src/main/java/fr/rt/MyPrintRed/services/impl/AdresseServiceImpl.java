@@ -2,6 +2,7 @@ package fr.rt.MyPrintRed.services.impl;
 
 
 import fr.rt.MyPrintRed.dto.AdresseDto;
+import fr.rt.MyPrintRed.entities.Adresse;
 import fr.rt.MyPrintRed.mapper.AdresseMapper;
 import fr.rt.MyPrintRed.repositories.AdresseRepository;
 import fr.rt.MyPrintRed.services.AdresseService;
@@ -27,5 +28,18 @@ public class AdresseServiceImpl implements AdresseService {
     @Override
     public List<AdresseDto> getAdresses() {
         return adresseMapper.toListDto(adresseRepository.findAll());
+    }
+
+    @Override
+    public AdresseDto updateAdresse(Integer idAdresse, AdresseDto adresseDto) {
+
+        Adresse adresseOptional =  adresseRepository.findById(idAdresse).orElseThrow();
+        adresseDto.setIdAdresse(idAdresse);
+
+        Adresse adresse = adresseMapper.toAdresse(adresseDto);
+
+
+
+        return adresseMapper.toDto(adresseRepository.save(adresse));
     }
 }

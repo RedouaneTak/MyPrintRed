@@ -27,4 +27,10 @@ public class AdresseController {
 
     }
 
+    @PutMapping("{idAdresse}")
+    public ResponseEntity update(@PathVariable Integer idAdresse,@RequestBody AdresseDto adresseDto){
+
+        return ResponseEntity.ok(adresseService.updateAdresse(idAdresse,adresseDto));
+    }
+
 }
