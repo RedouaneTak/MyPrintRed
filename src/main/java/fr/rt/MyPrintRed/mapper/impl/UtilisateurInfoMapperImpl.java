@@ -1,11 +1,10 @@
 package fr.rt.MyPrintRed.mapper.impl;
 
-import fr.rt.MyPrintRed.dto.UtilisateurDto;
 import fr.rt.MyPrintRed.dto.UtilisateurInfoDto;
 import fr.rt.MyPrintRed.entities.Utilisateur;
 import fr.rt.MyPrintRed.mapper.UtilisateurInfoMapper;
 
-public class UtilisateurInfoMapperImp implements UtilisateurInfoMapper {
+public class UtilisateurInfoMapperImpl implements UtilisateurInfoMapper {
 
 
     @Override
