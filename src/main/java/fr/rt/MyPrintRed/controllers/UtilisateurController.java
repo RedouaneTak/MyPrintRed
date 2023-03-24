@@ -1,6 +1,7 @@
 package fr.rt.MyPrintRed.controllers;
 
 
+import fr.rt.MyPrintRed.dto.PasswordDto;
 import fr.rt.MyPrintRed.dto.UtilisateurDto;
 import fr.rt.MyPrintRed.dto.UtilisateurInfoDto;
 import fr.rt.MyPrintRed.services.UtilisateurService;
@@ -39,12 +40,22 @@ public class UtilisateurController {
         }
     }
 
-    @PutMapping("{idUtilisateur}")
+    @PutMapping("{idUtilisateur}/update")
     public ResponseEntity updateUtilisateurById(@PathVariable("idUtilisateur") Integer idUtilisateur,
                                                 @RequestBody UtilisateurInfoDto utilisateurInfoDto) {
 
 
         return ResponseEntity.ok(utilisateurService.updateUtilisateur(idUtilisateur,utilisateurInfoDto));
+
+
+    }
+
+    @PutMapping("{idUtilisateur}/updatepassword")
+    public ResponseEntity updatePasswordUtilisateurById(@PathVariable("idUtilisateur") Integer idUtilisateur,
+                                                @RequestBody PasswordDto passwordDto) {
+
+
+        return ResponseEntity.ok(utilisateurService.updateUtilisateurPassword(idUtilisateur,passwordDto));
 
 
     }

@@ -1,5 +1,6 @@
 package fr.rt.MyPrintRed.services.impl;
 
+import fr.rt.MyPrintRed.dto.PasswordDto;
 import fr.rt.MyPrintRed.dto.UtilisateurDto;
 import fr.rt.MyPrintRed.dto.UtilisateurInfoDto;
 import fr.rt.MyPrintRed.entities.Utilisateur;
@@ -53,6 +54,17 @@ public class UtilisateurServiceImpl implements UtilisateurService {
 
         return utilisateurMapper.toDto(utilisateurRepository.save(utilisateur));
 
+    }
+
+    @Override
+    public UtilisateurDto updateUtilisateurPassword(Integer idUtilisateur, PasswordDto passwordDto) {
+        Utilisateur utilisateur = utilisateurRepository.findById(idUtilisateur).orElseThrow();
+
+        utilisateur.setPassword(passwordEncoder.encode(passwordDto.getPassword()));
+
+
+
+        return utilisateurMapper.toDto(utilisateurRepository.save(utilisateur));
     }
 
 
