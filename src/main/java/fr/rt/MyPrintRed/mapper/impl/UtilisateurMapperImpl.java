@@ -14,6 +14,7 @@ public class UtilisateurMapperImpl implements UtilisateurMapper {
     @Override
     public UtilisateurDto toDto(Utilisateur utilisateur) {
         return new UtilisateurDto(
+
                 utilisateur.getNom(),
                 utilisateur.getPrenom(),
                 utilisateur.getEmail(),

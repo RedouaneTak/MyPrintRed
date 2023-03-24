@@ -8,4 +8,7 @@ public interface UtilisateurService {
 
 
     List<UtilisateurDto> getUtilisateurs();
+    UtilisateurDto getUtilisateurById(Integer idUtilisateur);
+
+    void updateUtilisateur();
 }
