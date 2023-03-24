@@ -11,6 +11,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
+import java.util.Optional;
 
 @Service
 @RequiredArgsConstructor
@@ -41,5 +42,14 @@ public class AdresseServiceImpl implements AdresseService {
 
 
         return adresseMapper.toDto(adresseRepository.save(adresse));
+    }
+
+    @Override
+    public void deleteById(Integer idAdresse) {
+
+        adresseRepository.findById(idAdresse).orElseThrow();
+
+        adresseRepository.deleteById(idAdresse);
+
     }
 }
