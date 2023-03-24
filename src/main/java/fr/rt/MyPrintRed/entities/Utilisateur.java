@@ -43,6 +43,22 @@ public class Utilisateur implements UserDetails {
     @JoinColumn(name = "id_role")
     private Role role;
 
+    public Utilisateur(Integer idUtilisateur,String nom, String prenom, String email, String telephone,String password) {
+        this.idUtilisateur = idUtilisateur;
+        this.nom = nom;
+        this.prenom = prenom;
+        this.email = email;
+        this.telephone = telephone;
+        this.password = password;
+    }
+
+    public Utilisateur(String nom, String prenom, String email, String telephone) {
+        this.nom = nom;
+        this.prenom = prenom;
+        this.email = email;
+        this.telephone = telephone;
+    }
+
 
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {

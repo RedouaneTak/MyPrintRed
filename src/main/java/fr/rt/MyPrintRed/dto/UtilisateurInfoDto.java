@@ -1,8 +1,6 @@
 package fr.rt.MyPrintRed.dto;
 
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
-import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
@@ -12,15 +10,10 @@ import lombok.NoArgsConstructor;
 @Builder
 @AllArgsConstructor
 @NoArgsConstructor
-//@JsonIgnoreProperties(value="password")
-public class UtilisateurDto {
+public class UtilisateurInfoDto {
 
-    private Integer idUtilisateur;
     private String nom;
     private String prenom;
     private String email;
     private String telephone;
-    private String password;
-
-
 }

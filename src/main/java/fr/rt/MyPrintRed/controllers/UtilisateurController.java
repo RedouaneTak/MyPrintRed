@@ -2,6 +2,7 @@ package fr.rt.MyPrintRed.controllers;
 
 
 import fr.rt.MyPrintRed.dto.UtilisateurDto;
+import fr.rt.MyPrintRed.dto.UtilisateurInfoDto;
 import fr.rt.MyPrintRed.services.UtilisateurService;
 import jakarta.websocket.server.PathParam;
 import lombok.RequiredArgsConstructor;
@@ -21,19 +22,30 @@ public class UtilisateurController {
 
 
     @GetMapping
-    public ResponseEntity<List<UtilisateurDto>> getUtilisateurs(){
+    public ResponseEntity<List<UtilisateurDto>> getUtilisateurs() {
 
         return ResponseEntity.ok(utilisateurService.getUtilisateurs());
     }
-    @GetMapping("{idUtilisateur}")
-    public ResponseEntity updateUtilisateurById(@PathParam("id")Integer idUtilisateur){
 
-        try{
+    @GetMapping("{idUtilisateur}")
+    public ResponseEntity getUtilisateurById(@PathVariable("idUtilisateur") Integer idUtilisateur) {
+
+        try {
             return ResponseEntity.ok(utilisateurService.getUtilisateurById(idUtilisateur));
 
 
-        }catch (Exception e){
+        } catch (Exception e) {
             return new ResponseEntity<>(HttpStatus.NOT_FOUND);
         }
+    }
+
+    @PutMapping("{idUtilisateur}")
+    public ResponseEntity updateUtilisateurById(@PathVariable("idUtilisateur") Integer idUtilisateur,
+                                                @RequestBody UtilisateurInfoDto utilisateurInfoDto) {
+
+
+        return ResponseEntity.ok(utilisateurService.updateUtilisateur(idUtilisateur,utilisateurInfoDto));
+
+
     }
 }
