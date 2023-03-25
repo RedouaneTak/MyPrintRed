@@ -3,7 +3,11 @@ package fr.rt.MyPrintRed.mapper.impl;
 import fr.rt.MyPrintRed.dto.UtilisateurInfoDto;
 import fr.rt.MyPrintRed.entities.Utilisateur;
 import fr.rt.MyPrintRed.mapper.UtilisateurInfoMapper;
+import lombok.RequiredArgsConstructor;
+import org.springframework.stereotype.Component;
 
+@Component
+@RequiredArgsConstructor
 public class UtilisateurInfoMapperImpl implements UtilisateurInfoMapper {
 
 
