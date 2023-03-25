@@ -26,6 +26,13 @@ public class AdresseUtilisateurController {
 
     }
 
+    @GetMapping("{idUtilisateur}")
+    public ResponseEntity getAdresseUtilisateurByIdUtilisateur(@PathVariable("idUtilisateur")Integer idUtilisateur){
+
+        return ResponseEntity.ok(service.getAllById(idUtilisateur));
+
+    }
+
     @PostMapping("{idUtilisateur}")
     public ResponseEntity createAdresseByIdUtilisateur(@PathVariable("idUtilisateur")Integer idUtilisateur,
                                                        @RequestBody AdresseDto adresseDto){
@@ -40,7 +47,7 @@ public class AdresseUtilisateurController {
             service.deleteBy(idUtilisateur,idAdresse);
             return ResponseEntity.ok().build();
         }catch (Exception e){
-            
+
             return new ResponseEntity<>(HttpStatus.NO_CONTENT);
         }
 

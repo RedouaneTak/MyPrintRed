@@ -8,6 +8,9 @@ import java.util.List;
 public interface AdresseUtilisateurService {
 
     List<AdresseUtilisateurDto> getAll();
+
+    List<AdresseUtilisateurDto> getAllById(Integer idUtilisateur);
+
     AdresseUtilisateurDto insert(Integer idUtilisateur , AdresseDto adresseDto);
 
     void deleteBy(Integer idUtilisateur,Integer idAdresse);

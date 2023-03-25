@@ -34,6 +34,11 @@ public class AdresseUtilisateurServiceImpl implements AdresseUtilisateurService 
     }
 
     @Override
+    public List<AdresseUtilisateurDto> getAllById(Integer idUtilisateur) {
+        return mapper.toListDto(repository.findAdresseUtilisateursByAdresseUtilisateurPK_IdUtilisateur(idUtilisateur));
+    }
+
+    @Override
     public AdresseUtilisateurDto insert(Integer idUtilisateur , AdresseDto adresseDto) {
 
         AdresseDto  adresseDtoAdded =adresseService.insertAdresse(adresseDto);
