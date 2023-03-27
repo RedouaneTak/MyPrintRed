@@ -6,6 +6,9 @@ import fr.rt.MyPrintRed.mapper.TypeOptionMapper;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Component;
 
+import java.util.ArrayList;
+import java.util.List;
+
 @Component
 @RequiredArgsConstructor
 public class TypeOptionMapperImpl implements TypeOptionMapper {
@@ -23,5 +26,12 @@ public class TypeOptionMapperImpl implements TypeOptionMapper {
                 typeOptionDto.idTypeOption,
                 typeOptionDto.getLibelle()
         );
+    }
+
+    @Override
+    public List<TypeOptionDto> toDtoList(List<TypeOption> typeOptions) {
+        List<TypeOptionDto> dtoList = new ArrayList<>();
+        typeOptions.stream().forEach(typeOption -> dtoList.add(toDto(typeOption)));
+        return dtoList;
     }
 }

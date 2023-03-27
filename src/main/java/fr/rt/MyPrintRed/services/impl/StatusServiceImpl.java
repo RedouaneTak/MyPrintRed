@@ -46,8 +46,6 @@ public class StatusServiceImpl implements StatusService {
         Status status = statusMapper.toEntity(statusDto);
         return statusMapper.toDto(statusRepository.save(status));
 
-
-
     }
 
     @Override
