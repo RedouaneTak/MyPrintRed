@@ -4,7 +4,6 @@ import fr.rt.MyPrintRed.dto.PasswordDto;
 import fr.rt.MyPrintRed.dto.UtilisateurDto;
 import fr.rt.MyPrintRed.dto.UtilisateurInfoDto;
 import fr.rt.MyPrintRed.entities.Utilisateur;
-import fr.rt.MyPrintRed.mapper.UtilisateurInfoMapper;
 import fr.rt.MyPrintRed.mapper.UtilisateurMapper;
 import fr.rt.MyPrintRed.repositories.UtilisateurRepository;
 import fr.rt.MyPrintRed.services.UtilisateurService;

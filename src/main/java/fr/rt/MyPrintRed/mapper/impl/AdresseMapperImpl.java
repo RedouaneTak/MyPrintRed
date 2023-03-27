@@ -2,9 +2,7 @@ package fr.rt.MyPrintRed.mapper.impl;
 
 
 import fr.rt.MyPrintRed.dto.AdresseDto;
-import fr.rt.MyPrintRed.dto.UtilisateurDto;
 import fr.rt.MyPrintRed.entities.Adresse;
-import fr.rt.MyPrintRed.entities.Utilisateur;
 import fr.rt.MyPrintRed.mapper.AdresseMapper;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Component;
