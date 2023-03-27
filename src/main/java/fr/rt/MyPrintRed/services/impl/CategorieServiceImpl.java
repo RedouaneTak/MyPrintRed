@@ -9,6 +9,7 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.util.List;
 import java.util.Optional;
 
 @Service
@@ -37,7 +38,18 @@ public class CategorieServiceImpl implements CategorieService {
     }
 
     @Override
+    public List<CategorieDto> getCategories() {
+        return categorieMapper.toListDto(categorieRepository.findAll());
+    }
+
+    @Override
     public CategorieDto getById(Integer idCategorie) {
         return categorieMapper.toDto(categorieRepository.findById(idCategorie).orElseThrow());
+    }
+
+    @Override
+    public void deleteById(Integer idCategorie) {
+        categorieRepository.findById(idCategorie).orElseThrow();
+        categorieRepository.deleteById(idCategorie);
     }
 }

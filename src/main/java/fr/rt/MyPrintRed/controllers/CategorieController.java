@@ -3,6 +3,7 @@ package fr.rt.MyPrintRed.controllers;
 import fr.rt.MyPrintRed.dto.CategorieDto;
 import fr.rt.MyPrintRed.services.CategorieService;
 import lombok.RequiredArgsConstructor;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
@@ -12,6 +13,12 @@ import org.springframework.web.bind.annotation.*;
 public class CategorieController {
 
     private final CategorieService categorieService;
+
+
+    @GetMapping("")
+    public ResponseEntity getCategories(){
+        return ResponseEntity.ok(categorieService.getCategories());
+    }
 
     @GetMapping("{idCategorie}")
     public ResponseEntity getCategorieById(@PathVariable("idCategorie")Integer idCategorie){
@@ -31,6 +38,18 @@ public class CategorieController {
                                           @RequestBody CategorieDto categorieDto){
 
         return ResponseEntity.ok(categorieService.update(idCategorie,categorieDto));
+    }
+
+    @DeleteMapping("{idCategorie}")
+    public ResponseEntity deleteMapping(@PathVariable("idCategorie")Integer idCategorie){
+
+        try{
+            categorieService.deleteById(idCategorie);
+            return ResponseEntity.ok().build();
+
+        }catch (Exception e){
+            return new ResponseEntity<>(HttpStatus.NO_CONTENT);
+        }
     }
 
 

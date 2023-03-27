@@ -6,6 +6,9 @@ import fr.rt.MyPrintRed.mapper.CategorieMapper;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Component;
 
+import java.util.ArrayList;
+import java.util.List;
+
 @Component
 @RequiredArgsConstructor
 public class CategorieMapperImpl implements CategorieMapper {
@@ -23,5 +26,15 @@ public class CategorieMapperImpl implements CategorieMapper {
                 categorieDto.getIdCategorie(),
                 categorieDto.getNom()
         );
+    }
+
+    @Override
+    public List<CategorieDto> toListDto(List<Categorie> categories) {
+        List<CategorieDto> dtoList = new ArrayList<>();
+
+        categories.stream().forEach(categorie -> dtoList.add(toDto(categorie)));
+
+
+        return dtoList;
     }
 }

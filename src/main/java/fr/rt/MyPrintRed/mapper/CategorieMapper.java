@@ -5,6 +5,8 @@ import fr.rt.MyPrintRed.entities.Categorie;
 import org.mapstruct.Mapper;
 import org.mapstruct.NullValuePropertyMappingStrategy;
 
+import java.util.List;
+
 @Mapper(componentModel = "spring",nullValuePropertyMappingStrategy = NullValuePropertyMappingStrategy.IGNORE)
 
 public interface CategorieMapper {
@@ -12,4 +14,6 @@ public interface CategorieMapper {
     CategorieDto toDto(Categorie categorie);
 
     Categorie toEntity(CategorieDto categorieDto);
+
+    List<CategorieDto> toListDto(List<Categorie> categories);
 }
