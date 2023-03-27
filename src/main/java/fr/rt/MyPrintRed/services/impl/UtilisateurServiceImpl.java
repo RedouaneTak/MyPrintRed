@@ -46,9 +46,9 @@ public class UtilisateurServiceImpl implements UtilisateurService {
         Utilisateur utilisateur = utilisateurRepository.findById(idUtilisateur).orElseThrow();
 
         utilisateur.setNom(utilisateurDto.getNom());
-        utilisateur.setPrenom(utilisateur.getPrenom());
-        utilisateur.setEmail(utilisateur.getEmail());
-        utilisateur.setTelephone(utilisateur.getTelephone());
+        utilisateur.setPrenom(utilisateurDto.getPrenom());
+        utilisateur.setEmail(utilisateurDto.getEmail());
+        utilisateur.setTelephone(utilisateurDto.getTelephone());
 
 
 
