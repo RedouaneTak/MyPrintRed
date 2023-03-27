@@ -15,7 +15,7 @@ public interface AdresseUtilisateurMapper {
 
     AdresseUtilisateurDto toDto(AdresseUtilisateur adresseUtilisateur);
 
-    AdresseUtilisateur toAdresseU(AdresseUtilisateurDto adresseUtilisateurDto);
+    AdresseUtilisateur toEntity(AdresseUtilisateurDto adresseUtilisateurDto);
 
     AdresseUtilisateur fromIdAndAdresseDto(Integer idUtilisateur, AdresseDto adresseDto);
 

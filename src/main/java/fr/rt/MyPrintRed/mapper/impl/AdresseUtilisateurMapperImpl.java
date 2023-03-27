@@ -30,7 +30,7 @@ public class AdresseUtilisateurMapperImpl implements AdresseUtilisateurMapper {
     }
 
     @Override
-    public AdresseUtilisateur toAdresseU(AdresseUtilisateurDto adresseUtilisateurDto) {
+    public AdresseUtilisateur toEntity(AdresseUtilisateurDto adresseUtilisateurDto) {
 
        AdresseUtilisateur adresseUtilisateur = new AdresseUtilisateur();
 
