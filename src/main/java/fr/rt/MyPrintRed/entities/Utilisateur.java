@@ -59,6 +59,10 @@ public class Utilisateur implements UserDetails {
         this.telephone = telephone;
     }
 
+    public Utilisateur(Integer idUtilisateur) {
+        this.idUtilisateur = idUtilisateur;
+    }
+
 
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {

@@ -2,6 +2,7 @@ package fr.rt.MyPrintRed.services.impl;
 
 
 import fr.rt.MyPrintRed.dto.CommandeDto;
+import fr.rt.MyPrintRed.dto.InsertCommandeDto;
 import fr.rt.MyPrintRed.entities.Commande;
 import fr.rt.MyPrintRed.mapper.CommandeMapper;
 import fr.rt.MyPrintRed.repositories.CommandeRepository;
@@ -11,6 +12,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
+import java.util.Optional;
 
 @Service
 @RequiredArgsConstructor
@@ -31,9 +33,18 @@ public class CommandeServiceImpl implements CommandeService {
     }
 
     @Override
-    public CommandeDto insert(CommandeDto commandeDto) {
+    public CommandeDto insert(InsertCommandeDto insertCommandeDto) {
 
-        return commandeMapper.toDto(commandeRepository.save(commandeMapper.toEntity(commandeDto)));
+        Optional<Integer> index = commandeRepository.getMaxId();
+        Commande commande = commandeMapper.toEntity(insertCommandeDto);
+
+        if(index.isPresent())
+            commande.setNumeroCommande(index.get()+1);
+        else
+            commande.setNumeroCommande(1);
+
+        System.out.println(commande);
+        return commandeMapper.toDto(commandeRepository.save(commande));
 
     }
 }

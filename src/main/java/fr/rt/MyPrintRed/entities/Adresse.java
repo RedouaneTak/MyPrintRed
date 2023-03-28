@@ -32,4 +32,7 @@ public class Adresse {
     private String ville;
 
 
+    public Adresse(Integer idAdresse) {
+        this.idAdresse = idAdresse;
+    }
 }

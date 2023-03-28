@@ -1,7 +1,11 @@
 package fr.rt.MyPrintRed.mapper.impl;
 
 import fr.rt.MyPrintRed.dto.CommandeDto;
+import fr.rt.MyPrintRed.dto.InsertCommandeDto;
+import fr.rt.MyPrintRed.entities.Adresse;
 import fr.rt.MyPrintRed.entities.Commande;
+import fr.rt.MyPrintRed.entities.Status;
+import fr.rt.MyPrintRed.entities.Utilisateur;
 import fr.rt.MyPrintRed.mapper.AdresseMapper;
 import fr.rt.MyPrintRed.mapper.CommandeMapper;
 import fr.rt.MyPrintRed.mapper.StatusMapper;
@@ -9,6 +13,7 @@ import fr.rt.MyPrintRed.mapper.UtilisateurMapper;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Component;
 
+import java.sql.Date;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -42,6 +47,20 @@ public class CommandeMapperImpl implements CommandeMapper {
                 utilisateurMapper.toUtilisateur(commandeDto.getUtilisateurDto()),
                 adresseMapper.toAdresse(commandeDto.getAdresseDto())
         );
+    }
+
+    @Override
+    public Commande toEntity(InsertCommandeDto insertCommandeDto) {
+        Commande commande = new Commande();
+        Date date = new Date(System.currentTimeMillis());
+
+        commande.setPrixCommande(insertCommandeDto.getPrix());
+        commande.setAdresse(new Adresse(insertCommandeDto.getIdAdresse()));
+        commande.setUtilisateur(new Utilisateur(insertCommandeDto.getIdUtilisateur()));
+        commande.setStatus(new Status(1,"EN COURS"));
+        commande.setDate(date);
+
+        return commande;
     }
 
     @Override

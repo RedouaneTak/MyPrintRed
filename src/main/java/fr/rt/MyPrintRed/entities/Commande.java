@@ -18,7 +18,7 @@ import java.util.Objects;
 @Table(name = "commande", schema = "public", catalog = "MYPRINTRED")
 public class Commande {
 
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+
     @Id
     @Column(name = "numero_commande")
     private int numeroCommande;

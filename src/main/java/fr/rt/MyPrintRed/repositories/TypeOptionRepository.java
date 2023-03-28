@@ -15,7 +15,6 @@ import java.util.Optional;
 public interface TypeOptionRepository extends JpaRepository<TypeOption, TypeOptionPK> {
 
 
-    //select max(id_type_option) from type_option where id_option = 1
     @Query(value = "SELECT max(to.typeOptionPK.idTypeOption) from TypeOption to where to.typeOptionPK.idOption = :#{#idOption}")
     Optional<Integer> getMaxId(@Param("idOption") Integer idOption);
 

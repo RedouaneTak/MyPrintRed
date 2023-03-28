@@ -2,6 +2,7 @@ package fr.rt.MyPrintRed.controllers;
 
 
 import fr.rt.MyPrintRed.dto.CommandeDto;
+import fr.rt.MyPrintRed.dto.InsertCommandeDto;
 import fr.rt.MyPrintRed.services.CommandeService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
@@ -25,7 +26,7 @@ public class CommandeController {
     }
 
     @PostMapping("")
-    public ResponseEntity insert(@RequestBody CommandeDto commandeDto){
-        return ResponseEntity.ok(commandeService.insert(commandeDto));
+    public ResponseEntity insert(@RequestBody InsertCommandeDto insertCommandeDto){
+        return ResponseEntity.ok(commandeService.insert(insertCommandeDto));
     }
 }

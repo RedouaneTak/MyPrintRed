@@ -1,6 +1,7 @@
 package fr.rt.MyPrintRed.services;
 
 import fr.rt.MyPrintRed.dto.CommandeDto;
+import fr.rt.MyPrintRed.dto.InsertCommandeDto;
 
 import java.util.List;
 
@@ -10,5 +11,5 @@ public interface CommandeService {
 
     CommandeDto getById(Integer numeroCommande);
 
-    CommandeDto insert(CommandeDto commandeDto);
+    CommandeDto insert(InsertCommandeDto insertCommandeDto);
 }

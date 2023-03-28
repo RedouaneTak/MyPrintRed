@@ -2,6 +2,7 @@ package fr.rt.MyPrintRed.mapper;
 
 
 import fr.rt.MyPrintRed.dto.CommandeDto;
+import fr.rt.MyPrintRed.dto.InsertCommandeDto;
 import fr.rt.MyPrintRed.entities.Commande;
 import org.mapstruct.Mapper;
 import org.mapstruct.NullValuePropertyMappingStrategy;
@@ -15,6 +16,8 @@ public interface CommandeMapper {
     CommandeDto toDto(Commande commande);
 
     Commande toEntity(CommandeDto commandeDto);
+
+    Commande toEntity(InsertCommandeDto insertCommandeDto);
 
     List<CommandeDto> toDtoList(List<Commande> commandes);
 }
