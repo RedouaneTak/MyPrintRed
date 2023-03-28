@@ -9,9 +9,8 @@ import lombok.NoArgsConstructor;
 @Builder
 @AllArgsConstructor
 @NoArgsConstructor
-public class TypeOptionDto {
+public class OptionDto {
 
-    public Integer idTypeOption;
-
-    public String libelle;
+    private Integer idOption;
+    private String libelle;
 }

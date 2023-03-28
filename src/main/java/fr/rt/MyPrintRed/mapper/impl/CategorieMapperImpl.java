@@ -16,7 +16,7 @@ public class CategorieMapperImpl implements CategorieMapper {
     public CategorieDto toDto(Categorie categorie) {
         return new CategorieDto(
                 categorie.getIdCategorie(),
-                categorie.getNom()
+                categorie.getLibelle()
         );
     }
 
@@ -24,7 +24,7 @@ public class CategorieMapperImpl implements CategorieMapper {
     public Categorie toEntity(CategorieDto categorieDto) {
         return new Categorie(
                 categorieDto.getIdCategorie(),
-                categorieDto.getNom()
+                categorieDto.getLibelle()
         );
     }
 

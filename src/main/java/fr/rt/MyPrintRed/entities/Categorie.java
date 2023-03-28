@@ -6,8 +6,6 @@ import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
-import java.util.Objects;
-
 @Data
 @Builder
 @NoArgsConstructor
@@ -20,8 +18,8 @@ public class Categorie {
     @Column(name = "id_categorie")
     private int idCategorie;
     @Basic
-    @Column(name = "nom")
-    private String nom;
+    @Column(name = "libelle")
+    private String libelle;
 
 
 }

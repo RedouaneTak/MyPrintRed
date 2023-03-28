@@ -12,5 +12,6 @@ import lombok.NoArgsConstructor;
 public class CategorieDto {
 
     private Integer idCategorie;
-    private String nom;
+    private String libelle;
 }
+

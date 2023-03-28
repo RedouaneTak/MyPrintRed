@@ -13,12 +13,12 @@ import java.util.Objects;
 @NoArgsConstructor
 @AllArgsConstructor
 @Entity
-@Table(name = "type_option", schema = "public", catalog = "MYPRINTRED")
-public class TypeOption {
+@Table(name = "option", schema = "public", catalog = "MYPRINTRED")
+public class Option {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Id
-    @Column(name = "id_type_option")
-    private int idTypeOption;
+    @Column(name = "id_option")
+    private int idOption;
     @Basic
     @Column(name = "libelle")
     private String libelle;
