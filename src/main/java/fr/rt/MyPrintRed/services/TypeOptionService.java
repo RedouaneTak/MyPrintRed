@@ -13,6 +13,10 @@ public interface TypeOptionService {
 
     TypeOptionDto insert(TypeOptionDto typeOptionDto);
 
+    TypeOptionDto update(Integer idOption,Integer idTypeOption,TypeOptionDto typeOptionDto);
+
+    void deleteById(Integer idOption,Integer idTypeOption);
+
 
 
 }

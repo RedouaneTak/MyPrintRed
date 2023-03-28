@@ -8,6 +8,7 @@ import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Repository;
 
+import java.util.List;
 import java.util.Optional;
 
 @Repository
@@ -17,4 +18,7 @@ public interface TypeOptionRepository extends JpaRepository<TypeOption, TypeOpti
     //select max(id_type_option) from type_option where id_option = 1
     @Query(value = "SELECT max(to.typeOptionPK.idTypeOption) from TypeOption to where to.typeOptionPK.idOption = :#{#idOption}")
     Optional<Integer> getMaxId(@Param("idOption") Integer idOption);
+
+    @Query(value = "SELECT to from TypeOption to order by to.typeOptionPK.idOption,to.typeOptionPK.idTypeOption")
+    List<TypeOption> getAllOrderByIdOption();
 }
