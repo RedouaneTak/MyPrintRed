@@ -45,7 +45,8 @@ public class WebSecurityConfig {
                         "/swagger-ui.html",
 
 
-                        "/auth/**"
+                        "/auth/**",
+                        "/fichiers/**"
 
                 )
                 .permitAll()
