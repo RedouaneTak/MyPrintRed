@@ -24,7 +24,7 @@ public class FichierController {
 
     private final FichierService storageService;
 
-    @PostMapping("/upload")
+    @PostMapping("")
     public ResponseEntity<ResponseMessage> uploadFile(@RequestParam("file") MultipartFile file) {
         String message = "";
         try {
@@ -39,27 +39,19 @@ public class FichierController {
     }
 
     @GetMapping("")
-    public ResponseEntity<List<ResponseFile>> getListFiles() {
-        List<ResponseFile> files = storageService.getFichiers().map(dbFile -> {
-            String fileDownloadUri = ServletUriComponentsBuilder
-                    .fromCurrentContextPath()
-                    .path("/files/")
-                    .path(String.valueOf(dbFile.getIdFichier()))
-                    .toUriString();
-
-            return new ResponseFile(
-                    dbFile.getNom(),
-                    fileDownloadUri,
-                    dbFile.getTypeFichier(),
-                    dbFile.getDataFichier().length);
-        }).collect(Collectors.toList());
-
-        return ResponseEntity.status(HttpStatus.OK).body(files);
+    public ResponseEntity getFichiers(){
+        return ResponseEntity.ok(storageService.getFichiers());
     }
 
-    @GetMapping("/{id}")
-    public ResponseEntity<byte[]> getFile(@PathVariable Integer id) {
-        Fichier fileDB = storageService.getFile(id);
+    @GetMapping("{idFichier}")
+    public ResponseEntity getFichierById(@PathVariable("idFichier")Integer idFichier){
+        return ResponseEntity.ok(storageService.getById(idFichier));
+    }
+
+
+    @GetMapping("/{idFichier}/download")
+    public ResponseEntity<byte[]> getFile(@PathVariable Integer idFichier) {
+        Fichier fileDB = storageService.getFile(idFichier);
 
         return ResponseEntity.ok()
                 .header(HttpHeaders.CONTENT_DISPOSITION, "attachment; filename=\"" + fileDB.getNom() + "\"")

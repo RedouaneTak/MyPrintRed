@@ -1,7 +1,9 @@
 package fr.rt.MyPrintRed.services.impl;
 
 
+import fr.rt.MyPrintRed.dto.FichierDto;
 import fr.rt.MyPrintRed.entities.Fichier;
+import fr.rt.MyPrintRed.mapper.FichierMapper;
 import fr.rt.MyPrintRed.repositories.FichierRepository;
 import fr.rt.MyPrintRed.services.FichierService;
 import lombok.RequiredArgsConstructor;
@@ -11,6 +13,7 @@ import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.multipart.MultipartFile;
 
 import java.io.IOException;
+import java.util.List;
 import java.util.stream.Stream;
 
 @Service
@@ -19,6 +22,8 @@ import java.util.stream.Stream;
 public class FichierServiceImpl implements FichierService {
 
     private final FichierRepository repository;
+
+    private final FichierMapper mapper;
 
     @Override
     public Fichier store(MultipartFile file) throws IOException {
@@ -35,7 +40,12 @@ public class FichierServiceImpl implements FichierService {
     }
 
     @Override
-    public Stream<Fichier> getFichiers() {
-        return repository.findAll().stream();
+    public List<FichierDto> getFichiers() {
+        return mapper.toDtoList(repository.findAll());
+    }
+
+    @Override
+    public FichierDto getById(Integer idFichier) {
+        return mapper.toDto(repository.findById(idFichier).orElseThrow());
     }
 }
