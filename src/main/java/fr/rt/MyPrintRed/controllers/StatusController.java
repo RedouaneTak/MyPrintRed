@@ -2,6 +2,7 @@ package fr.rt.MyPrintRed.controllers;
 
 import fr.rt.MyPrintRed.dto.StatusDto;
 import fr.rt.MyPrintRed.services.StatusService;
+import io.swagger.v3.oas.annotations.tags.Tag;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -10,6 +11,7 @@ import org.springframework.web.bind.annotation.*;
 @RestController
 @RequestMapping("/statuses")
 @RequiredArgsConstructor
+@Tag(name = "Statuses")
 public class StatusController {
 
     private final StatusService statusService;

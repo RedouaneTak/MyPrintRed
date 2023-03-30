@@ -5,6 +5,7 @@ import fr.rt.MyPrintRed.dto.ResponseFile;
 import fr.rt.MyPrintRed.dto.ResponseMessage;
 import fr.rt.MyPrintRed.entities.Fichier;
 import fr.rt.MyPrintRed.services.FichierService;
+import io.swagger.v3.oas.annotations.tags.Tag;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
@@ -19,6 +20,7 @@ import java.util.stream.Collectors;
 @RestController
 @RequestMapping("/fichiers")
 @RequiredArgsConstructor
+@Tag(name = "Fichiers")
 public class FichierController {
 
 

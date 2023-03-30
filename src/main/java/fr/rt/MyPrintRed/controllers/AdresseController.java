@@ -12,7 +12,7 @@ import org.springframework.web.bind.annotation.*;
 @RestController
 @RequestMapping("/adresses")
 @RequiredArgsConstructor
-@Tag(name = "ADRESSE")
+@Tag(name = "Adresses")
 public class AdresseController {
 
     private final AdresseService adresseService;

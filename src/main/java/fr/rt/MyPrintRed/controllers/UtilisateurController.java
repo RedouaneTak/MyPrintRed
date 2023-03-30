@@ -6,6 +6,7 @@ import fr.rt.MyPrintRed.dto.PasswordDto;
 import fr.rt.MyPrintRed.dto.UtilisateurDto;
 import fr.rt.MyPrintRed.dto.UtilisateurInfoDto;
 import fr.rt.MyPrintRed.services.UtilisateurService;
+import io.swagger.v3.oas.annotations.tags.Tag;
 import jakarta.websocket.server.PathParam;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpEntity;
@@ -18,6 +19,7 @@ import java.util.List;
 @RestController
 @RequestMapping("/users")
 @RequiredArgsConstructor
+@Tag(name = "Utilisateurs")
 public class UtilisateurController {
 
     private final UtilisateurService utilisateurService;

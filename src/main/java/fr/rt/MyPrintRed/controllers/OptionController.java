@@ -3,6 +3,7 @@ package fr.rt.MyPrintRed.controllers;
 
 import fr.rt.MyPrintRed.dto.OptionDto;
 import fr.rt.MyPrintRed.services.OptionService;
+import io.swagger.v3.oas.annotations.tags.Tag;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -11,6 +12,7 @@ import org.springframework.web.bind.annotation.*;
 @RestController
 @RequestMapping("/options")
 @RequiredArgsConstructor
+@Tag(name = "Options")
 public class OptionController {
 
     private final OptionService optionService;

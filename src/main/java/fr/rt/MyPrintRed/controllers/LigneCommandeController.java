@@ -2,6 +2,7 @@ package fr.rt.MyPrintRed.controllers;
 
 import fr.rt.MyPrintRed.dto.InsertLigneCommandeDto;
 import fr.rt.MyPrintRed.services.LigneCommandeService;
+import io.swagger.v3.oas.annotations.tags.Tag;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -10,6 +11,7 @@ import org.springframework.web.bind.annotation.*;
 @RestController
 @RequestMapping("/lignecommandes")
 @RequiredArgsConstructor
+@Tag(name = "LigneCommandes")
 public class LigneCommandeController {
 
     private final LigneCommandeService service;

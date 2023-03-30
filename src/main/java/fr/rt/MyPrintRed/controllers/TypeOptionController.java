@@ -4,6 +4,7 @@ package fr.rt.MyPrintRed.controllers;
 import fr.rt.MyPrintRed.dto.TypeOptionDto;
 import fr.rt.MyPrintRed.entities.TypeOption;
 import fr.rt.MyPrintRed.services.TypeOptionService;
+import io.swagger.v3.oas.annotations.tags.Tag;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -12,6 +13,7 @@ import org.springframework.web.bind.annotation.*;
 @RestController
 @RequestMapping("/typeoptions")
 @RequiredArgsConstructor
+@Tag(name = "TypeOptions")
 public class TypeOptionController {
 
     private final TypeOptionService service;
