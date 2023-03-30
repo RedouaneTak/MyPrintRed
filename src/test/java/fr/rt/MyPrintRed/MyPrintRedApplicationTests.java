@@ -8,6 +8,8 @@ class MyPrintRedApplicationTests {
 
 	@Test
 	void contextLoads() {
+
+
 	}
 
 }
