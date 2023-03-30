@@ -3,6 +3,7 @@ package fr.rt.MyPrintRed.controllers;
 
 import fr.rt.MyPrintRed.dto.AdresseDto;
 import fr.rt.MyPrintRed.services.AdresseService;
+import io.swagger.v3.oas.annotations.tags.Tag;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -11,6 +12,7 @@ import org.springframework.web.bind.annotation.*;
 @RestController
 @RequestMapping("/adresses")
 @RequiredArgsConstructor
+@Tag(name = "ADRESSE")
 public class AdresseController {
 
     private final AdresseService adresseService;

@@ -3,10 +3,14 @@ package fr.rt.MyPrintRed.services.impl;
 
 import fr.rt.MyPrintRed.dto.CommandeDto;
 import fr.rt.MyPrintRed.dto.InsertCommandeDto;
+import fr.rt.MyPrintRed.dto.StatusDto;
 import fr.rt.MyPrintRed.entities.Commande;
+import fr.rt.MyPrintRed.entities.Status;
 import fr.rt.MyPrintRed.mapper.CommandeMapper;
 import fr.rt.MyPrintRed.repositories.CommandeRepository;
+import fr.rt.MyPrintRed.repositories.StatusRepository;
 import fr.rt.MyPrintRed.services.CommandeService;
+import fr.rt.MyPrintRed.services.StatusService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -21,6 +25,8 @@ public class CommandeServiceImpl implements CommandeService {
 
     private final CommandeRepository commandeRepository;
     private final CommandeMapper commandeMapper;
+
+    private final StatusRepository statusRepository;
 
     @Override
     public List<CommandeDto> getCommandes() {
@@ -43,7 +49,18 @@ public class CommandeServiceImpl implements CommandeService {
         else
             commande.setNumeroCommande(1);
 
-        System.out.println(commande);
+        return commandeMapper.toDto(commandeRepository.save(commande));
+
+    }
+
+    @Override
+    public CommandeDto updateStatus(Integer numeroCommande, Integer idStatus) {
+
+        Commande commande = commandeRepository.findById(numeroCommande).orElseThrow();
+
+        Status status = statusRepository.getById(idStatus);
+        commande.setStatus(status);
+
         return commandeMapper.toDto(commandeRepository.save(commande));
 
     }

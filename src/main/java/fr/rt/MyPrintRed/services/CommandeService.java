@@ -12,4 +12,7 @@ public interface CommandeService {
     CommandeDto getById(Integer numeroCommande);
 
     CommandeDto insert(InsertCommandeDto insertCommandeDto);
+
+    CommandeDto updateStatus(Integer numeroCommande,Integer idStatus);
+
 }
