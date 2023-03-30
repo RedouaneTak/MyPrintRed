@@ -43,7 +43,6 @@ public class LigneCommandeServiceImpl implements LigneCommandeService {
     public LigneCommandeDto insert(InsertLigneCommandeDto insertDto) {
 
         Optional<Integer> index = repository.getMaxId(insertDto.getNumeroCommande());
-        System.out.println("INDEX = " + index);
         LigneCommande ligneCommande = mapper.toEntity(insertDto);
 
         if(index.isPresent())
@@ -51,9 +50,8 @@ public class LigneCommandeServiceImpl implements LigneCommandeService {
         else
             ligneCommande.getLigneCommandePK().setNumeroLigneCommande(1);
 
-        System.out.println("LC = " + ligneCommande);
 
         return mapper.toDto(repository.save(ligneCommande));
-        
+
     }
 }
