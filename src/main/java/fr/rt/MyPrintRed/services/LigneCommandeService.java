@@ -15,4 +15,6 @@ public interface LigneCommandeService {
     LigneCommandeDto getAllByNumeros(Integer numeroCommande,Integer numeroLigneCommande);
 
     LigneCommandeDto insert(InsertLigneCommandeDto insertDto);
+
+    LigneCommandeDto updateStatus(Integer numeroCommande,Integer numeroLigneCommande,Integer idStatus);
 }
