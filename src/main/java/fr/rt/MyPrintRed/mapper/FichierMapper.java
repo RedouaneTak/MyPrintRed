@@ -15,4 +15,6 @@ public interface FichierMapper {
     FichierDto toDto(Fichier fichier);
 
     List<FichierDto> toDtoList(List<Fichier> fichiers);
+
+    Fichier toFichierOnlyId(FichierDto fichierDto);
 }

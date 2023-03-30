@@ -34,4 +34,7 @@ public class Fichier {
     private byte[] dataFichier;
 
 
+    public Fichier(Integer idFichier) {
+        this.idFichier = idFichier;
+    }
 }

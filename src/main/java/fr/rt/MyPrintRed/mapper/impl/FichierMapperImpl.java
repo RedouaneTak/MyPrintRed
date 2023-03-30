@@ -30,4 +30,9 @@ public class FichierMapperImpl implements FichierMapper {
         fichiers.stream().forEach(fichier -> dtoList.add(toDto(fichier)));
         return dtoList;
     }
+
+    @Override
+    public Fichier toFichierOnlyId(FichierDto fichierDto) {
+        return new Fichier(fichierDto.getIdFichier());
+    }
 }
