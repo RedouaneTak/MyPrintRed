@@ -16,4 +16,11 @@ public interface OptionLigneCommandeRepository extends JpaRepository<OptionLigne
             "and olc.optionLigneCommandePK.numeroLigneCommande = :#{#numeroLigneCommande}")
     List<OptionLigneCommande> getAllByNumeros(@Param("numeroCommande")Integer numeroCommande,
                                               @Param("numeroLigneCommande")Integer numeroLigneCommande);
+
+    @Query(value ="delete from OptionLigneCommande olc where olc.optionLigneCommandePK.numeroCommande = :#{#numeroCommande} " +
+            "and olc.optionLigneCommandePK.numeroLigneCommande = :#{#numeroLigneCommande}")
+    void deleteAllByNumeros(@Param("numeroCommande")Integer numeroCommande,
+                            @Param("numeroLigneCommande")Integer numeroLigneCommande);
+
+    void deleteByOptionLigneCommandePK_NumeroCommandeAndAndOptionLigneCommandePK_NumeroLigneCommande(Integer numeroCommande,Integer numeroLigneCommande);
 }

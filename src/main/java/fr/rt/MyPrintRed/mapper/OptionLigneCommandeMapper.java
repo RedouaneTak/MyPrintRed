@@ -1,6 +1,7 @@
 package fr.rt.MyPrintRed.mapper;
 
 import fr.rt.MyPrintRed.dto.OptionLigneCommandeDto;
+import fr.rt.MyPrintRed.dto.TypeOptionDto;
 import fr.rt.MyPrintRed.entities.OptionLigneCommande;
 import org.mapstruct.Mapper;
 import org.mapstruct.NullValuePropertyMappingStrategy;
@@ -14,5 +15,9 @@ public interface OptionLigneCommandeMapper {
 
     OptionLigneCommande toEntity(OptionLigneCommandeDto dto);
 
+    OptionLigneCommande toEntity(Integer numeroCommande, Integer numeroLigneCommande, TypeOptionDto typeOptionDto);
+
     List<OptionLigneCommandeDto> toDtoList(List<OptionLigneCommande> optionLigneCommandes);
+
+    List<OptionLigneCommande> toEntityList(List<OptionLigneCommandeDto> optionLigneCommandeDtos);
 }

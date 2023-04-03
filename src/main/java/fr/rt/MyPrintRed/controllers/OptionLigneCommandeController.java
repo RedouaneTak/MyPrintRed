@@ -1,12 +1,15 @@
 package fr.rt.MyPrintRed.controllers;
 
 import fr.rt.MyPrintRed.dto.OptionLigneCommandeDto;
+import fr.rt.MyPrintRed.dto.TypeOptionDto;
 import fr.rt.MyPrintRed.services.OptionLigneCommandeService;
 import io.swagger.v3.oas.annotations.tags.Tag;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+
+import java.util.List;
 
 @RestController
 @RequestMapping("/optionlignecommandes")
@@ -41,4 +44,15 @@ public class OptionLigneCommandeController {
             return new ResponseEntity<>(HttpStatus.NO_CONTENT);
         }
     }
+    
+
+    @PutMapping("{numeroCommande}/{numeroLigneCommande}")
+    public ResponseEntity updateTypeOptions(@PathVariable("numeroCommande") Integer numeroCommande,
+                                            @PathVariable("numeroLigneCommande")Integer numeroLigneCommande,
+                                            @RequestBody List<TypeOptionDto> typeOptionDtos){
+
+        return ResponseEntity.ok(service.updateOptions(numeroCommande,numeroLigneCommande,typeOptionDtos));
+
+    }
+
 }

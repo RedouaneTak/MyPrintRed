@@ -1,6 +1,7 @@
 package fr.rt.MyPrintRed.mapper.impl;
 
 import fr.rt.MyPrintRed.dto.OptionLigneCommandeDto;
+import fr.rt.MyPrintRed.dto.TypeOptionDto;
 import fr.rt.MyPrintRed.entities.OptionLigneCommande;
 import fr.rt.MyPrintRed.entities.OptionLigneCommandePK;
 import fr.rt.MyPrintRed.mapper.OptionLigneCommandeMapper;
@@ -39,9 +40,26 @@ public class OptionLigneCommandeMapperImpl implements OptionLigneCommandeMapper 
     }
 
     @Override
+    public OptionLigneCommande toEntity(Integer numeroCommande, Integer numeroLigneCommande, TypeOptionDto typeOptionDto) {
+        return new OptionLigneCommande(
+                new OptionLigneCommandePK(
+                        numeroCommande,numeroLigneCommande,
+                        typeOptionMapper.toEntity(typeOptionDto)
+                )
+        );
+    }
+
+    @Override
     public List<OptionLigneCommandeDto> toDtoList(List<OptionLigneCommande> optionLigneCommandes) {
         List<OptionLigneCommandeDto> dtoList = new ArrayList<>();
         optionLigneCommandes.stream().forEach(optionLigneCommande -> dtoList.add(toDto(optionLigneCommande)));
         return dtoList;
+    }
+
+    @Override
+    public List<OptionLigneCommande> toEntityList(List<OptionLigneCommandeDto> optionLigneCommandeDtos) {
+        List<OptionLigneCommande> entityList = new ArrayList<>();
+        optionLigneCommandeDtos.stream().forEach(optionLigneCommandeDto -> entityList.add(toEntity(optionLigneCommandeDto)));
+        return entityList;
     }
 }

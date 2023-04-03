@@ -1,6 +1,7 @@
 package fr.rt.MyPrintRed.services;
 
 import fr.rt.MyPrintRed.dto.OptionLigneCommandeDto;
+import fr.rt.MyPrintRed.dto.TypeOptionDto;
 
 import java.util.List;
 
@@ -13,6 +14,9 @@ public interface OptionLigneCommandeService {
     OptionLigneCommandeDto insert(OptionLigneCommandeDto optionLigneCommandeDto);
 
     void delete(OptionLigneCommandeDto optionLigneCommandeDto);
+
+
+    List<OptionLigneCommandeDto> updateOptions(Integer numeroCommande,Integer numeroLigneCommande,List<TypeOptionDto> typeOptionDtos);
 
 
 }
