@@ -10,7 +10,7 @@ import lombok.NoArgsConstructor;
 @Builder
 @AllArgsConstructor
 @NoArgsConstructor
-public class UtilisateurInfoDto {
+public class InsertUtilisateurDto {
 
     private String nom;
     private String prenom;

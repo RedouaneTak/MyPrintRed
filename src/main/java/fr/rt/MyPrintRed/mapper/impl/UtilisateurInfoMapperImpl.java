@@ -1,6 +1,6 @@
 package fr.rt.MyPrintRed.mapper.impl;
 
-import fr.rt.MyPrintRed.dto.UtilisateurInfoDto;
+import fr.rt.MyPrintRed.dto.InsertUtilisateurDto;
 import fr.rt.MyPrintRed.entities.Utilisateur;
 import fr.rt.MyPrintRed.mapper.UtilisateurInfoMapper;
 import lombok.RequiredArgsConstructor;
@@ -12,8 +12,8 @@ public class UtilisateurInfoMapperImpl implements UtilisateurInfoMapper {
 
 
     @Override
-    public UtilisateurInfoDto toDto(Utilisateur utilisateur) {
-        return new UtilisateurInfoDto(
+    public InsertUtilisateurDto toDto(Utilisateur utilisateur) {
+        return new InsertUtilisateurDto(
 
                 utilisateur.getNom(),
                 utilisateur.getPrenom(),
@@ -24,13 +24,13 @@ public class UtilisateurInfoMapperImpl implements UtilisateurInfoMapper {
     }
 
     @Override
-    public Utilisateur toUtilisateur(UtilisateurInfoDto utilisateurInfoDto) {
+    public Utilisateur toUtilisateur(InsertUtilisateurDto insertUtilisateurDto) {
         return new Utilisateur(
 
-                utilisateurInfoDto.getNom(),
-                utilisateurInfoDto.getPrenom(),
-                utilisateurInfoDto.getEmail(),
-                utilisateurInfoDto.getTelephone()
+                insertUtilisateurDto.getNom(),
+                insertUtilisateurDto.getPrenom(),
+                insertUtilisateurDto.getEmail(),
+                insertUtilisateurDto.getTelephone()
 
 
         );

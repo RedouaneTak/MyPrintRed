@@ -2,7 +2,7 @@ package fr.rt.MyPrintRed.services.impl;
 
 import fr.rt.MyPrintRed.dto.PasswordDto;
 import fr.rt.MyPrintRed.dto.UtilisateurDto;
-import fr.rt.MyPrintRed.dto.UtilisateurInfoDto;
+import fr.rt.MyPrintRed.dto.InsertUtilisateurDto;
 import fr.rt.MyPrintRed.entities.Utilisateur;
 import fr.rt.MyPrintRed.mapper.UtilisateurMapper;
 import fr.rt.MyPrintRed.repositories.UtilisateurRepository;
@@ -40,7 +40,7 @@ public class UtilisateurServiceImpl implements UtilisateurService {
     }
 
     @Override
-    public UtilisateurDto updateUtilisateur(Integer idUtilisateur, UtilisateurInfoDto utilisateurDto) {
+    public UtilisateurDto updateUtilisateur(Integer idUtilisateur, InsertUtilisateurDto utilisateurDto) {
 
         Utilisateur utilisateur = utilisateurRepository.findById(idUtilisateur).orElseThrow();
 

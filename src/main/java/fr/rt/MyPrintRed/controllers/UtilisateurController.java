@@ -1,15 +1,13 @@
 package fr.rt.MyPrintRed.controllers;
 
 
-import fr.rt.MyPrintRed.dto.AdresseDto;
 import fr.rt.MyPrintRed.dto.PasswordDto;
 import fr.rt.MyPrintRed.dto.UtilisateurDto;
-import fr.rt.MyPrintRed.dto.UtilisateurInfoDto;
+import fr.rt.MyPrintRed.dto.InsertUtilisateurDto;
 import fr.rt.MyPrintRed.services.UtilisateurService;
 import io.swagger.v3.oas.annotations.tags.Tag;
-import jakarta.websocket.server.PathParam;
+import jakarta.servlet.http.HttpServletRequest;
 import lombok.RequiredArgsConstructor;
-import org.springframework.http.HttpEntity;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -17,7 +15,7 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RestController
-@RequestMapping("/users")
+@RequestMapping("/utilisateurs")
 @RequiredArgsConstructor
 @Tag(name = "Utilisateurs")
 public class UtilisateurController {
@@ -26,9 +24,17 @@ public class UtilisateurController {
 
 
     @GetMapping
-    public ResponseEntity<List<UtilisateurDto>> getUtilisateurs() {
+    public ResponseEntity<List<UtilisateurDto>> getUtilisateurs(HttpServletRequest request) {
 
-        return ResponseEntity.ok(utilisateurService.getUtilisateurs());
+        String uriBase = request.getRequestURL().toString();
+        List<UtilisateurDto> utilisateurDtos = utilisateurService.getUtilisateurs();
+        for(UtilisateurDto utilisateurDto : utilisateurDtos){
+
+            utilisateurDto.addLink("all",uriBase);
+            utilisateurDto.addLink("self",uriBase+"/"+utilisateurDto.getIdUtilisateur());
+        }
+
+        return ResponseEntity.ok(utilisateurDtos);
     }
 
     @GetMapping("{idUtilisateur}")
@@ -45,10 +51,10 @@ public class UtilisateurController {
 
     @PutMapping("{idUtilisateur}/update")
     public ResponseEntity updateUtilisateurById(@PathVariable("idUtilisateur") Integer idUtilisateur,
-                                                @RequestBody UtilisateurInfoDto utilisateurInfoDto) {
+                                                @RequestBody InsertUtilisateurDto insertUtilisateurDto) {
 
 
-        return ResponseEntity.ok(utilisateurService.updateUtilisateur(idUtilisateur,utilisateurInfoDto));
+        return ResponseEntity.ok(utilisateurService.updateUtilisateur(idUtilisateur, insertUtilisateurDto));
 
 
     }
