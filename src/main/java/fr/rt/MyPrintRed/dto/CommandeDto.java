@@ -1,6 +1,7 @@
 package fr.rt.MyPrintRed.dto;
 
 
+import com.fasterxml.jackson.annotation.JsonPropertyOrder;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
@@ -13,6 +14,7 @@ import java.sql.Date;
 @Builder
 @AllArgsConstructor
 @NoArgsConstructor
+@JsonPropertyOrder({"numeroCommande","prixCommande","date","statusDto","utilisateurDto","adresseDto"})
 public class CommandeDto extends HateOas{
 
     private Integer numeroCommande;
@@ -21,4 +23,6 @@ public class CommandeDto extends HateOas{
     private StatusDto statusDto;
     private UtilisateurDto utilisateurDto;
     private AdresseDto adresseDto;
+
+
 }
