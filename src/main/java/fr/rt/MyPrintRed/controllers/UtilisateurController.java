@@ -14,6 +14,8 @@ import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
+import static fr.rt.MyPrintRed.controllers.BaseUrl.ADRESSE_UTILISATEUR_BASE_URL;
+
 @RestController
 @RequestMapping("/utilisateurs")
 @RequiredArgsConstructor
@@ -38,11 +40,15 @@ public class UtilisateurController {
     }
 
     @GetMapping("{idUtilisateur}")
-    public ResponseEntity getUtilisateurById(@PathVariable("idUtilisateur") Integer idUtilisateur) {
+    public ResponseEntity getUtilisateurById(HttpServletRequest request,@PathVariable("idUtilisateur") Integer idUtilisateur) {
 
+        String uriBase = request.getRequestURL().toString();
         try {
-            return ResponseEntity.ok(utilisateurService.getUtilisateurById(idUtilisateur));
+            UtilisateurDto utilisateurDto = utilisateurService.getUtilisateurById(idUtilisateur);
+            utilisateurDto.addLink("all",uriBase.replace("/"+utilisateurDto.getIdUtilisateur(),""));
+            utilisateurDto.addLink("adresses",ADRESSE_UTILISATEUR_BASE_URL+"/"+utilisateurDto.getIdUtilisateur());
 
+            return ResponseEntity.ok(utilisateurDto);
 
         } catch (Exception e) {
             return new ResponseEntity<>(HttpStatus.NOT_FOUND);

@@ -11,7 +11,7 @@ import lombok.NoArgsConstructor;
 @Builder
 @AllArgsConstructor
 @NoArgsConstructor
-public class AdresseUtilisateurDto {
+public class AdresseUtilisateurDto extends HateOas {
 
     private Integer idUtilisateur;
 

@@ -6,10 +6,15 @@ import fr.rt.MyPrintRed.dto.AdresseDto;
 import fr.rt.MyPrintRed.dto.AdresseUtilisateurDto;
 import fr.rt.MyPrintRed.services.AdresseUtilisateurService;
 import io.swagger.v3.oas.annotations.tags.Tag;
+import jakarta.servlet.http.HttpServletRequest;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+
+import java.util.List;
+
+import static fr.rt.MyPrintRed.controllers.BaseUrl.*;
 
 @RestController
 @RequestMapping("/adresseutilisateur")
@@ -29,9 +34,17 @@ public class AdresseUtilisateurController {
     }
 
     @GetMapping("{idUtilisateur}")
-    public ResponseEntity getAdresseUtilisateurByIdUtilisateur(@PathVariable("idUtilisateur")Integer idUtilisateur){
+    public ResponseEntity getAdresseUtilisateurByIdUtilisateur(HttpServletRequest request, @PathVariable("idUtilisateur")Integer idUtilisateur){
 
-        return ResponseEntity.ok(service.getAllById(idUtilisateur));
+        String uriBase = request.getRequestURL().toString();
+
+        List<AdresseUtilisateurDto> adresseUtilisateurDtos = service.getAllById(idUtilisateur);
+        for(AdresseUtilisateurDto adresseUtilisateurDto : adresseUtilisateurDtos){
+            adresseUtilisateurDto.addLink("all",uriBase);
+            adresseUtilisateurDto.addLink("self",ADRESSE_BASE_URL+"/"+adresseUtilisateurDto.getAdresseDto().getIdAdresse());
+        }
+
+        return ResponseEntity.ok(adresseUtilisateurDtos);
 
     }
 
