@@ -32,6 +32,11 @@ public class AdresseServiceImpl implements AdresseService {
     }
 
     @Override
+    public AdresseDto getAdresseById(Integer idAdresse) {
+        return adresseMapper.toDto(adresseRepository.findById(idAdresse).orElseThrow());
+    }
+
+    @Override
     public AdresseDto updateAdresse(Integer idAdresse, AdresseDto adresseDto) {
 
         Adresse adresseOptional =  adresseRepository.findById(idAdresse).orElseThrow();

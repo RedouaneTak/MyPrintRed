@@ -35,7 +35,6 @@ public class CommandeController {
             commandeDto.addLink("self",uriBase +"/"+commandeDto.getNumeroCommande());
         }
 
-
         return ResponseEntity.ok(commandeDtos);
     }
 

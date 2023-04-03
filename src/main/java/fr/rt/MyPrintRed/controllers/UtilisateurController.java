@@ -15,6 +15,7 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 import static fr.rt.MyPrintRed.controllers.BaseUrl.ADRESSE_UTILISATEUR_BASE_URL;
+import static fr.rt.MyPrintRed.controllers.BaseUrl.COMMANDE_BASE_URL;
 
 @RestController
 @RequestMapping("/utilisateurs")
@@ -47,6 +48,7 @@ public class UtilisateurController {
             UtilisateurDto utilisateurDto = utilisateurService.getUtilisateurById(idUtilisateur);
             utilisateurDto.addLink("all",uriBase.replace("/"+utilisateurDto.getIdUtilisateur(),""));
             utilisateurDto.addLink("adresses",ADRESSE_UTILISATEUR_BASE_URL+"/"+utilisateurDto.getIdUtilisateur());
+            utilisateurDto.addLink("commandes",COMMANDE_BASE_URL);
 
             return ResponseEntity.ok(utilisateurDto);
 

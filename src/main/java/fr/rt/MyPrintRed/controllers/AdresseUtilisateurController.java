@@ -42,6 +42,7 @@ public class AdresseUtilisateurController {
         for(AdresseUtilisateurDto adresseUtilisateurDto : adresseUtilisateurDtos){
             adresseUtilisateurDto.addLink("all",uriBase);
             adresseUtilisateurDto.addLink("self",ADRESSE_BASE_URL+"/"+adresseUtilisateurDto.getAdresseDto().getIdAdresse());
+            adresseUtilisateurDto.addLink("utilisateur",UTILISATEUR_BASE_URL+"/"+adresseUtilisateurDto.getIdUtilisateur());
         }
 
         return ResponseEntity.ok(adresseUtilisateurDtos);

@@ -11,6 +11,8 @@ public interface AdresseService {
 
     List<AdresseDto> getAdresses();
 
+    AdresseDto getAdresseById(Integer idAdresse);
+
     AdresseDto updateAdresse(Integer idAdresse,AdresseDto adresseDto);
 
     void deleteById(Integer idAdresse);
