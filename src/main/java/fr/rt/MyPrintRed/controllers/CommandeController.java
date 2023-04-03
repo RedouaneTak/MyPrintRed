@@ -43,6 +43,12 @@ public class CommandeController {
         return ResponseEntity.ok(commandeService.getById(numeroCommande));
     }
 
+    @GetMapping("utilisateur/{idUtilisateur}")
+    public ResponseEntity getCommandesByIdUser(@PathVariable("idUtilisateur")Integer idUtilisateur){
+
+        return ResponseEntity.ok(commandeService.getAllByIdUtilisateur(idUtilisateur));
+    }
+
     @PostMapping("")
     public ResponseEntity insert(@RequestBody InsertCommandeDto insertCommandeDto){
         return ResponseEntity.ok(commandeService.insert(insertCommandeDto));

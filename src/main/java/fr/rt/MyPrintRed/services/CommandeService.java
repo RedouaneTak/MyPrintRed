@@ -11,6 +11,8 @@ public interface CommandeService {
 
     CommandeDto getById(Integer numeroCommande);
 
+    List<CommandeDto> getAllByIdUtilisateur(Integer idUtilisateur);
+
     CommandeDto insert(InsertCommandeDto insertCommandeDto);
 
     CommandeDto updateStatus(Integer numeroCommande,Integer idStatus);

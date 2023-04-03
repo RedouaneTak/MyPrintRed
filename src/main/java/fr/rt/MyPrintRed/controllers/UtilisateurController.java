@@ -48,7 +48,7 @@ public class UtilisateurController {
             UtilisateurDto utilisateurDto = utilisateurService.getUtilisateurById(idUtilisateur);
             utilisateurDto.addLink("all",uriBase.replace("/"+utilisateurDto.getIdUtilisateur(),""));
             utilisateurDto.addLink("adresses",ADRESSE_UTILISATEUR_BASE_URL+"/"+utilisateurDto.getIdUtilisateur());
-            utilisateurDto.addLink("commandes",COMMANDE_BASE_URL);
+            utilisateurDto.addLink("commandes",COMMANDE_BASE_URL+"/utilisateur/"+utilisateurDto.getIdUtilisateur());
 
             return ResponseEntity.ok(utilisateurDto);
 

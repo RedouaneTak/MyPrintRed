@@ -39,6 +39,11 @@ public class CommandeServiceImpl implements CommandeService {
     }
 
     @Override
+    public List<CommandeDto> getAllByIdUtilisateur(Integer idUtilisateur) {
+        return commandeMapper.toDtoList(commandeRepository.getCommandesByIdUtilisateur(idUtilisateur));
+    }
+
+    @Override
     public CommandeDto insert(InsertCommandeDto insertCommandeDto) {
 
         Optional<Integer> index = commandeRepository.getMaxId();
