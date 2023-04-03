@@ -5,10 +5,16 @@ import fr.rt.MyPrintRed.dto.CommandeDto;
 import fr.rt.MyPrintRed.dto.InsertCommandeDto;
 import fr.rt.MyPrintRed.services.CommandeService;
 import io.swagger.v3.oas.annotations.tags.Tag;
+import jakarta.servlet.http.HttpServletRequest;
 import lombok.RequiredArgsConstructor;
+import org.mapstruct.Context;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+
+import java.net.URI;
+import java.util.ArrayList;
+import java.util.List;
 
 @RestController
 @RequestMapping("/commandes")
@@ -19,8 +25,18 @@ public class CommandeController {
     private final CommandeService commandeService;
 
     @GetMapping("")
-    public ResponseEntity getCommandes(){
-        return ResponseEntity.ok(commandeService.getCommandes());
+    public ResponseEntity getCommandes(HttpServletRequest request){
+
+        String uriBase = request.getRequestURL().toString();
+
+        List<CommandeDto> commandeDtos = commandeService.getCommandes();
+        for(CommandeDto commandeDto : commandeDtos){
+            commandeDto.addLink("all",uriBase);
+            commandeDto.addLink("self",uriBase +"/"+commandeDto.getNumeroCommande());
+        }
+
+
+        return ResponseEntity.ok(commandeDtos);
     }
 
     @GetMapping("{numeroCommande}")

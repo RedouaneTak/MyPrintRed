@@ -13,7 +13,7 @@ import java.sql.Date;
 @Builder
 @AllArgsConstructor
 @NoArgsConstructor
-public class CommandeDto {
+public class CommandeDto extends HateOas{
 
     private Integer numeroCommande;
     private BigDecimal prixCommande;
