@@ -15,4 +15,6 @@ public interface OptionCategorieService {
     OptionCategorieDto insert(OptionCategorieDto  optionCategorieDto);
 
     void removeTypeOptionsFromCategorie(OptionCategorieDto optionCategorieDto);
+
+    List<OptionCategorieDto> updateOptions(Integer idCategorie,List<TypeOptionDto> typeOptionDtos);
 }

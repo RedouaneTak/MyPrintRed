@@ -2,6 +2,7 @@ package fr.rt.MyPrintRed.mapper.impl;
 
 
 import fr.rt.MyPrintRed.dto.OptionCategorieDto;
+import fr.rt.MyPrintRed.dto.TypeOptionDto;
 import fr.rt.MyPrintRed.entities.OptionCategorie;
 import fr.rt.MyPrintRed.entities.OptionCategoriePK;
 import fr.rt.MyPrintRed.entities.TypeOption;
@@ -41,6 +42,16 @@ public class OptionCategorieMapperImpl implements OptionCategorieMapper {
 
 
         return optionCategorie;
+    }
+
+    @Override
+    public OptionCategorie toEntity(Integer idCategorie, TypeOptionDto typeOptionDto) {
+        return new OptionCategorie(
+                new OptionCategoriePK(
+                        idCategorie,
+                        toMapper.toEntity(typeOptionDto)
+                )
+        );
     }
 
     @Override

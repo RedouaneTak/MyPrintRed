@@ -15,4 +15,6 @@ public interface OptionCategorieRepository extends JpaRepository<OptionCategorie
     @Query(value = "select oc from OptionCategorie oc where oc.optionCategoriePK.idCategorie = :#{#idCategorie} ")
     List<OptionCategorie> getAllByIdCategorie(@Param("idCategorie")Integer idCategorie);
 
+    void deleteAllByOptionCategoriePK_IdCategorie(Integer idCategorie);
+
 }

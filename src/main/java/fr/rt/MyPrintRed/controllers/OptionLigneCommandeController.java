@@ -44,7 +44,7 @@ public class OptionLigneCommandeController {
             return new ResponseEntity<>(HttpStatus.NO_CONTENT);
         }
     }
-    
+
 
     @PutMapping("{numeroCommande}/{numeroLigneCommande}")
     public ResponseEntity updateTypeOptions(@PathVariable("numeroCommande") Integer numeroCommande,

@@ -2,6 +2,7 @@ package fr.rt.MyPrintRed.services.impl;
 
 import fr.rt.MyPrintRed.dto.OptionCategorieDto;
 import fr.rt.MyPrintRed.dto.TypeOptionDto;
+import fr.rt.MyPrintRed.entities.OptionCategorie;
 import fr.rt.MyPrintRed.mapper.OptionCategorieMapper;
 import fr.rt.MyPrintRed.repositories.OptionCategorieRepository;
 import fr.rt.MyPrintRed.services.OptionCategorieService;
@@ -43,6 +44,17 @@ public class OptionCategorieServiceImpl implements OptionCategorieService {
 
         repository.delete(mapper.toEntity(optionCategorieDto));
 
+    }
+
+    @Override
+    public List<OptionCategorieDto> updateOptions(Integer idCategorie, List<TypeOptionDto> typeOptionDtos) {
+
+        repository.deleteAllByOptionCategoriePK_IdCategorie(idCategorie);
+        for(TypeOptionDto typeOptionDto : typeOptionDtos){
+            OptionCategorie optionCategorie = mapper.toEntity(idCategorie,typeOptionDto);
+            repository.save(optionCategorie);
+        }
+        return mapper.toDtoList(repository.getAllByIdCategorie(idCategorie));
     }
 
 

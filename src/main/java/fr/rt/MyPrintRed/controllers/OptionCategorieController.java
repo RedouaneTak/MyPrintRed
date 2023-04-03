@@ -1,11 +1,14 @@
 package fr.rt.MyPrintRed.controllers;
 
 import fr.rt.MyPrintRed.dto.OptionCategorieDto;
+import fr.rt.MyPrintRed.dto.TypeOptionDto;
 import fr.rt.MyPrintRed.services.OptionCategorieService;
 import io.swagger.v3.oas.annotations.tags.Tag;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+
+import java.util.List;
 
 @RestController
 @RequestMapping("/optioncategories")
@@ -34,5 +37,10 @@ public class OptionCategorieController {
     public ResponseEntity delete(@RequestBody OptionCategorieDto optionCategorieDto){
         service.removeTypeOptionsFromCategorie(optionCategorieDto);
         return ResponseEntity.ok().build();
+    }
+    @PutMapping("{idCategorie}")
+    public ResponseEntity updateOptions(@PathVariable("idCategorie") Integer idCategorie,
+                                        @RequestBody List<TypeOptionDto> typeOptionDtos){
+        return ResponseEntity.ok(service.updateOptions(idCategorie,typeOptionDtos));
     }
 }
