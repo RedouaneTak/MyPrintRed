@@ -11,9 +11,12 @@ import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
+import static fr.rt.MyPrintRed.controllers.BaseUrl.FRONT_BASE_URL;
+
 @RestController
 @RequestMapping("/optionlignecommandes")
 @RequiredArgsConstructor
+@CrossOrigin(origins = FRONT_BASE_URL)
 @Tag(name = "OptionLigneCommandes")
 public class OptionLigneCommandeController {
 

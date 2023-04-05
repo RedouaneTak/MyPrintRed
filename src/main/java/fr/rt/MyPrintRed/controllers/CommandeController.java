@@ -16,9 +16,12 @@ import java.net.URI;
 import java.util.ArrayList;
 import java.util.List;
 
+import static fr.rt.MyPrintRed.controllers.BaseUrl.FRONT_BASE_URL;
+
 @RestController
 @RequestMapping("/commandes")
 @RequiredArgsConstructor
+@CrossOrigin(origins = FRONT_BASE_URL)
 @Tag(name = "Commandes")
 public class CommandeController {
 

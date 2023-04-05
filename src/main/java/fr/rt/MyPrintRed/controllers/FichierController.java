@@ -17,9 +17,12 @@ import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 import java.util.List;
 import java.util.stream.Collectors;
 
+import static fr.rt.MyPrintRed.controllers.BaseUrl.FRONT_BASE_URL;
+
 @RestController
 @RequestMapping("/fichiers")
 @RequiredArgsConstructor
+@CrossOrigin(origins = FRONT_BASE_URL)
 @Tag(name = "Fichiers")
 public class FichierController {
 

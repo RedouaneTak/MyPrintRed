@@ -10,9 +10,12 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.security.core.parameters.P;
 import org.springframework.web.bind.annotation.*;
 
+import static fr.rt.MyPrintRed.controllers.BaseUrl.FRONT_BASE_URL;
+
 @RestController
 @RequestMapping("/adresses")
 @RequiredArgsConstructor
+@CrossOrigin(origins = FRONT_BASE_URL)
 @Tag(name = "Adresses")
 public class AdresseController {
 

@@ -19,6 +19,7 @@ import static fr.rt.MyPrintRed.controllers.BaseUrl.*;
 @RestController
 @RequestMapping("/adresseutilisateur")
 @RequiredArgsConstructor
+@CrossOrigin(origins = FRONT_BASE_URL)
 @Tag(name = "AdresseUtilisateur")
 public class AdresseUtilisateurController {
 

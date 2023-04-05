@@ -14,12 +14,12 @@ import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
-import static fr.rt.MyPrintRed.controllers.BaseUrl.ADRESSE_UTILISATEUR_BASE_URL;
-import static fr.rt.MyPrintRed.controllers.BaseUrl.COMMANDE_BASE_URL;
+import static fr.rt.MyPrintRed.controllers.BaseUrl.*;
 
 @RestController
 @RequestMapping("/utilisateurs")
 @RequiredArgsConstructor
+@CrossOrigin(origins = FRONT_BASE_URL)
 @Tag(name = "Utilisateurs")
 public class UtilisateurController {
 

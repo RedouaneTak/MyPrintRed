@@ -46,7 +46,8 @@ public class WebSecurityConfig {
 
 
                         "/auth/**",
-                        "/fichiers/**"
+                        "/fichiers/**",
+                        "/utilisateurs/**"
 
                 )
                 .permitAll()
